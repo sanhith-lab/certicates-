@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Mail, MapPin } from "lucide-react";
+import { ArrowDown, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 
 // SVG icons for social platforms
 const GithubIcon = () => (
@@ -20,12 +21,33 @@ export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center relative px-6 pt-24">
       <div className="max-w-5xl mx-auto text-center">
+        {/* Profile Photo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="mb-8"
+        >
+          <div className="relative inline-block">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full blur opacity-50 animate-pulse" />
+            <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-4 border-background shadow-2xl">
+              <Image
+                src="/images/profile.jpg"
+                alt="Sanhith Reddy Cherukupally"
+                fill
+                className="object-cover object-top"
+                priority
+              />
+            </div>
+          </div>
+        </motion.div>
+
         {/* Greeting */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-card/50 backdrop-blur-sm mb-8"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-card/50 backdrop-blur-sm mb-6"
         >
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           <span className="text-sm text-muted">Available for opportunities</span>
@@ -35,10 +57,10 @@ export function HeroSection() {
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4"
         >
-          <span className="text-foreground">Cherukupally</span>
+          <span className="text-foreground">Hi, I&apos;m</span>
           <br />
           <span className="gradient-text">Sanhith Reddy</span>
         </motion.h1>
@@ -47,17 +69,17 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap items-center justify-center gap-3 mb-8"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-wrap items-center justify-center gap-3 mb-6"
         >
           <span className="px-4 py-2 rounded-lg bg-primary/10 text-primary border border-primary/20 text-sm font-medium">
-            Full-Stack Developer
+            AI/ML Engineer
           </span>
           <span className="px-4 py-2 rounded-lg bg-secondary/10 text-secondary border border-secondary/20 text-sm font-medium">
-            Cybersecurity Enthusiast
+            Full-Stack Developer
           </span>
           <span className="px-4 py-2 rounded-lg bg-accent/10 text-accent border border-accent/20 text-sm font-medium">
-            AI/ML Explorer
+            Cybersecurity Enthusiast
           </span>
         </motion.div>
 
@@ -65,29 +87,35 @@ export function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-8 leading-relaxed"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-6 leading-relaxed"
         >
-          Building secure, scalable digital experiences. Passionate about crafting 
-          elegant solutions at the intersection of development and security.
+          B.Tech CSE student at SR University, passionate about building intelligent 
+          systems with AI/ML, crafting scalable web applications, and exploring cybersecurity.
         </motion.p>
 
-        {/* Location */}
+        {/* Location & Contact */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex items-center justify-center gap-2 text-muted-foreground mb-12"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-wrap items-center justify-center gap-4 text-muted-foreground mb-10"
         >
-          <MapPin size={16} />
-          <span className="text-sm">India</span>
+          <span className="flex items-center gap-2 text-sm">
+            <MapPin size={16} />
+            Telangana, India
+          </span>
+          <span className="flex items-center gap-2 text-sm">
+            <Phone size={16} />
+            +91 9652055577
+          </span>
         </motion.div>
 
         {/* Social Links */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
           className="flex items-center justify-center gap-4 mb-16"
         >
           <motion.a
@@ -97,35 +125,24 @@ export function HeroSection() {
             className="p-3 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm text-muted hover:text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all"
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6 }}
           >
             <GithubIcon />
           </motion.a>
           <motion.a
-            href="https://linkedin.com/in/sanhith-reddy"
+            href="https://www.linkedin.com/in/sanhith-reddy-cherukupally-a77702293/"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm text-muted hover:text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all"
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7 }}
           >
             <LinkedinIcon />
           </motion.a>
           <motion.a
-            href="mailto:sanhith@example.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:sanhithreddycherukupally@gmail.com"
             className="p-3 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm text-muted hover:text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all"
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8 }}
           >
             <Mail size={22} />
           </motion.a>

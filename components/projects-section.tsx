@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Folder } from "lucide-react";
+import { ExternalLink, Folder, Brain, Bot, LineChart, Truck, CreditCard } from "lucide-react";
 
 // SVG icon for GitHub
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
@@ -14,48 +14,56 @@ const GithubIcon = ({ size = 24 }: { size?: number }) => (
 
 const projects = [
   {
+    title: "Credit Card Fraud Detection",
+    description: "Built a fraud detection model using Random Forest algorithm. Utilized NumPy, Pandas, and Scikit-learn for data processing and training. Achieved strong accuracy on real-world financial datasets.",
+    tags: ["Python", "Random Forest", "Scikit-learn", "Pandas", "NumPy"],
+    period: "Aug 2025 - Nov 2025",
+    github: "https://github.com/sanhith-lab",
+    icon: CreditCard,
+    featured: true,
+  },
+  {
+    title: "AI Trading Bot",
+    description: "Developed an AI-based trading bot for stocks and cryptocurrencies. Implemented reinforcement learning models (DQN/PPO) to optimize trading decisions. Integrated real-time market APIs for live price tracking and execution.",
+    tags: ["Python", "Reinforcement Learning", "DQN", "PPO", "APIs"],
+    period: "Sep 2026 - Dec 2026",
+    github: "https://github.com/sanhith-lab",
+    icon: Bot,
+    featured: true,
+  },
+  {
+    title: "Stock Prediction System",
+    description: "Built a system to predict optimal buy/sell timings for stocks using AI. Combined reinforcement learning with NLP-based sentiment analysis from financial news. Deployed using DevOps practices for continuous updates and monitoring.",
+    tags: ["Reinforcement Learning", "NLP", "Sentiment Analysis", "DevOps"],
+    period: "2026",
+    github: "https://github.com/sanhith-lab",
+    icon: LineChart,
+    featured: true,
+  },
+  {
+    title: "Brain Tumor Detection",
+    description: "Created a CNN-based model for MRI image classification. Used TensorFlow/PyTorch for training and evaluation. Improved model performance using preprocessing and feature extraction techniques.",
+    tags: ["Python", "CNN", "TensorFlow", "PyTorch", "Deep Learning"],
+    period: "Feb 2025 - May 2025",
+    github: "https://github.com/sanhith-lab",
+    icon: Brain,
+    featured: false,
+  },
+  {
+    title: "Doorstep Medicine Delivery",
+    description: "Developed an online platform for ordering medicines with doorstep delivery. Designed backend services and integrated APIs for order processing and tracking. Used DevOps tools for deployment, automation, and system reliability.",
+    tags: ["Web Development", "Node.js", "REST APIs", "DevOps"],
+    period: "2026",
+    github: "https://github.com/sanhith-lab",
+    icon: Truck,
+    featured: false,
+  },
+  {
     title: "Portfolio Website",
-    description: "A modern, animated portfolio website built with Next.js, Tailwind CSS, and Framer Motion. Features smooth animations and responsive design.",
+    description: "A modern, animated portfolio website built with Next.js, Tailwind CSS, and Framer Motion. Features smooth animations, responsive design, and dark theme.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/sanhith-lab/certicates-",
-    live: "#",
-    featured: true,
-  },
-  {
-    title: "Cybersecurity Dashboard",
-    description: "Real-time security monitoring dashboard with threat detection visualization and network analysis tools.",
-    tags: ["React", "Node.js", "D3.js", "Socket.io"],
-    github: "#",
-    live: "#",
-    featured: true,
-  },
-  {
-    title: "AI-Powered Analytics",
-    description: "Data analytics platform leveraging machine learning for predictive insights and automated reporting.",
-    tags: ["Python", "TensorFlow", "FastAPI", "React"],
-    github: "#",
-    live: "#",
-    featured: true,
-  },
-  {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with secure payment processing and inventory management.",
-    tags: ["Next.js", "Stripe", "PostgreSQL"],
-    github: "#",
-    featured: false,
-  },
-  {
-    title: "Task Management App",
-    description: "Collaborative project management tool with real-time updates and team features.",
-    tags: ["React", "Firebase", "Material-UI"],
-    github: "#",
-    featured: false,
-  },
-  {
-    title: "Network Scanner Tool",
-    description: "Python-based network scanning utility for security assessments and vulnerability detection.",
-    tags: ["Python", "Scapy", "CLI"],
-    github: "#",
+    icon: Folder,
     featured: false,
   },
 ];
@@ -100,7 +108,7 @@ export function ProjectsSection() {
                   <div className="relative aspect-video rounded-xl bg-card border border-border/50 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Folder size={64} className="text-muted-foreground/30" />
+                      <project.icon size={64} className="text-muted-foreground/30" />
                     </div>
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
@@ -114,18 +122,6 @@ export function ProjectsSection() {
                       >
                         <GithubIcon size={24} />
                       </motion.a>
-                      {project.live && (
-                        <motion.a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-3 rounded-full bg-card border border-border hover:border-primary transition-colors"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <ExternalLink size={24} />
-                        </motion.a>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -134,6 +130,9 @@ export function ProjectsSection() {
               {/* Project Info */}
               <div className={`flex-1 ${index % 2 === 0 ? "lg:text-right" : "lg:text-left"}`}>
                 <span className="text-primary font-mono text-sm">Featured Project</span>
+                {project.period && (
+                  <span className="text-muted font-mono text-xs ml-2">({project.period})</span>
+                )}
                 <h3 className="text-2xl sm:text-3xl font-bold mt-2 mb-4">{project.title}</h3>
                 <div className="p-6 rounded-xl bg-card/80 backdrop-blur-sm border border-border/50 mb-4">
                   <p className="text-muted leading-relaxed">{project.description}</p>
@@ -169,7 +168,7 @@ export function ProjectsSection() {
               >
                 <div className="h-full p-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <Folder className="text-primary" size={32} />
+                    <project.icon className="text-primary" size={32} />
                     <div className="flex items-center gap-3">
                       <a
                         href={project.github}
